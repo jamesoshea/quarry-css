@@ -26,24 +26,8 @@ gulp.task('build', function() {
     }))
     .pipe(gulp.dest('../quarry-webapp/dist/css'))
     .pipe(gulp.dest('../quarry-extension/css'));
-});
-
-gulp.task('docs', function() {
-  gulp.src(paths.doc)
-    .pipe(sass({outputStyle: 'compact', precision: 10}))
-    .pipe(autoprefixer())
-    .pipe(csscomb())
-    .pipe(gulp.dest('./docs/css'));
-  gulp.src(paths.source)
-    .pipe(sass({outputStyle: 'compact', precision: 10}))
-    .pipe(autoprefixer())
-    .pipe(csscomb())
-    .pipe(gulp.dest('./docs/dist'))
-    .pipe(cleancss())
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest('./docs/dist'));
+  gulp.src('./src/_variables.scss')
+    .pipe(gulp.dest('../quarry-webapp/src/css'));
 });
 
 gulp.task('default', ['build']);
