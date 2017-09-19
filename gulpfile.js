@@ -20,12 +20,12 @@ gulp.task('build', function() {
     .pipe(sass({outputStyle: 'compact', precision: 10}))
     .pipe(autoprefixer())
     .pipe(csscomb())
-    .pipe(gulp.dest('./test'))
     .pipe(cleancss())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('../quarry-webapp/dist/css'));
+    .pipe(gulp.dest('../quarry-webapp/dist/css'))
+    .pipe(gulp.dest('../quarry-extension/css'));
 });
 
 gulp.task('docs', function() {
